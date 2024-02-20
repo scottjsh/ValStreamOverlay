@@ -64,12 +64,14 @@ botao.onclick = function () {
   let fontcolor = cortexto.value.replace("#", "");
   let color = corfundo.value.replace("#", "");
   if (idu.value.length == 0) {
-    alert("Please fill all fields");
-    return;
+    regiao = "KR";
+    nmusu = "KVT ZEKI";
+    idusu = "Z3K1";
   }
   if (nmu.value.length == 0) {
-    alert("Please fill all fields");
-    return;
+    regiao = "KR";
+    nmusu = "KVT ZEKI";
+    idusu = "Z3K1";
   }
 
   if (trchck.checked) {
