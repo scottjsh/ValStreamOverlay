@@ -179,7 +179,7 @@ function checadados(){
 setInterval(main, 15000);
 setInterval(checadados, 15000);
 
-if (semwc === false){
+if (sParams.get("wl") === "dd"){
   function setapuuid(){
     reqpuuid = fazGet("https://api.henrikdev.xyz/valorant/v1/account/"+
       nmusuario +
@@ -253,7 +253,7 @@ if (semwc === false){
     setInterval(winlose, 30000);
     AtualizaVisual();
 }
-else if (semwc === true){
+else if (sParams.get("wl") === "ss"){
   document.getElementById("headerburrao").style.top = "-5px";
   document.getElementById("WLvalue").style.display = none;
 
