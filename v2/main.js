@@ -250,7 +250,9 @@ if (semwc === false){
     
     setapuuid()
     getprimeirapartida()
-    setInterval(winlose, 30000);
+    if(sParams.get("wl") === "dd") {
+        setInterval(winlose, 30000);
+    }
     AtualizaVisual();
 }
 else if (semwc === true){
