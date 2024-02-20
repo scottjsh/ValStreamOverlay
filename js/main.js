@@ -78,7 +78,7 @@ botao.onclick = function () {
   }
   link.value =
     window.location.origin +
-    "/v2/main.html?regiao=" +
+    "/ValStreamOverlay/v2/main.html?regiao=" +
     regiao +
     "&nmusuario=" +
     nmusu +
