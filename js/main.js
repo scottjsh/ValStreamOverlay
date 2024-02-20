@@ -13,6 +13,7 @@ const reg = document.getElementById("regiao");
 const idu = document.getElementById("lname");
 const nmu = document.getElementById("fname");
 const trchck = document.getElementById("transparentcheck");
+const wlchck = document.getElementById("wlcheck");
 const disc = document.getElementById("bannerpic");
 const divdisc = document.getElementById("lblbanner");
 let trachck = {};
@@ -76,7 +77,12 @@ botao.onclick = function () {
   } else {
     trachck = "nn";
   }
-  link.value =
+  if (wlchck.checked) {
+    wlcheck = "dd";
+  } else {
+    wlcheck = "ss";
+  }
+    link.value =
     window.location.origin +
     "/ValStreamOverlay/v2/main.html?regiao=" +
     regiao +
@@ -90,6 +96,8 @@ botao.onclick = function () {
     color +
     "&alpha=" +
     trachck +
+    "&wl=" +
+    wlcheck +
     "&iu=" +
     encodeURIComponent(iurl) +
     "&bu=" +
