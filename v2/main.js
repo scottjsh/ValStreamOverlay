@@ -161,7 +161,7 @@ if (icourl.length == 0) {
 }
 
 function thinking(){
-  if (document.getElementById("imgRank").src === window.location.origin + "/v2/Resources/Load.png"){
+  if (document.getElementById("imgRank").src === window.location.origin + "/ValStreamOverlay/v2/Resources/Load.png"){
     location.reload()
   } 
 }
