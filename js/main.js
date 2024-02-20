@@ -65,12 +65,12 @@ botao.onclick = function () {
   let color = corfundo.value.replace("#", "");
   if (idu.value.length == 0) {
     regiao = "KR";
-    nmusu = "KVT ZEKI";
+    nmusu = "KVTZEKI";
     idusu = "Z3K1";
   }
   if (nmu.value.length == 0) {
     regiao = "KR";
-    nmusu = "KVT ZEKI";
+    nmusu = "KVTZEKI";
     idusu = "Z3K1";
   }
 
