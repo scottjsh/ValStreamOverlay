@@ -238,6 +238,10 @@ body {
   display: flexbox;
   margin-left: 1.5rem;
 }
+#wl {
+  display: flexbox;
+  margin-left: 1.5rem;
+}
 #imagens {
   width: fit-content;
   margin-left: 5rem;
