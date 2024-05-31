@@ -36,18 +36,36 @@ let time = {};
 let win = 0;
 let lose = 0;
 let empatou = {};
-let semwc = url.searchParams.has("swl")
+let semwc = url.searchParams.has("swl");
+let apikey = '';
+
+if (url.searchParams.has("apikey")){
+  apikey = url.searchParams.get("apikey")
+} else {
+  document.getElementById("imgRank").style.visibility = "hidden"
+  document.getElementById("textonmrank").style.visibility = "hidden"
+  document.getElementById("ultmmr").style.visibility = "hidden"
+  apikey = ''
+}
+
 
 function fazGet(url) {
   let request = new XMLHttpRequest();
-  request.open("GET", url, false);
+  request.open("GET", url+"?api_key="+apikey, false);
+  request.send();
+  return request.responseText;
+}
+
+function fazGetQuery(url) {
+  let request = new XMLHttpRequest();
+  request.open("GET", url+"&api_key="+apikey, false);
   request.send();
   return request.responseText;
 }
 
 function leaderboard() {
   const reglow = regiao.toLowerCase();
-  let lb = fazGet(
+  let lb = fazGetQuery(
     "https://api.henrikdev.xyz/valorant/v1/leaderboard/" +
       reglow +
       "?name=" +
@@ -70,9 +88,9 @@ function main() {
       "/" +
       idusuario
   );
-  var jsonData = JSON.parse(dados);
-  isunrankedatoatual = jsonData.data.by_season.e8a1.number_of_games;
-  nodataseasonatual = jsonData.data.by_season.e8a1.error;
+  var jsonData = JSON.parse(dados); 
+  isunrankedatoatual = jsonData.data.by_season.e8a3.number_of_games;
+  nodataseasonatual = jsonData.data.by_season.e8a3.error;
   retornostatus = jsonData.status;
   checkifnull = jsonData.data.current_data.currenttier;
   dadosimportantesElo = jsonData.data.current_data.currenttierpatched;
@@ -88,7 +106,7 @@ function main() {
 }
 
 function foda() {
-  if (isunrankedatoatual < "4" || nodataseasonatual == "No data Available" && jogosnecessarios == "1") {
+  if (isunrankedatoatual < "1" || nodataseasonatual == "No data Available" && jogosnecessarios == "1") {
     dadosimportantesElo = "Unranked";
     dadosimportantesmmr = "100";
     dadosimportantesultimojogo = "nRanked";
@@ -123,9 +141,9 @@ function foda() {
 
   const ultpart = document.getElementById("ultimapartida");
   if (dadosimportantesultimojogo === "nRanked" && jateverank === false) {
-    ultpart.innerHTML = "Unranked " + isunrankedatoatual+"/5";
+    ultpart.innerHTML = "Unranked " + isunrankedatoatual+"/1";
   } else if (dadosimportantesultimojogo === "nRanked" && jateverank === true) {
-    ultpart.innerHTML = "Unranked " + isunrankedatoatual+"/5";}
+    ultpart.innerHTML = "Unranked " + isunrankedatoatual+"/1";}
   else if (dadosimportantesTier >= "24" && dadosimportantesultimojogo === 0) {
     ultpart.innerHTML = "Last Match: " + dadosimportantesultimojogo + "pts";
     bgpts.style.backgroundcolor = "grey";
@@ -165,7 +183,7 @@ function thinking(){
     location.reload()
   } 
 }
-setTimeout(thinking,10000);
+setTimeout(thinking(), 10000);
 main();
 foda();
 
@@ -190,7 +208,7 @@ if (sParams.get("wl") === "dd"){
     }
     
     function get(){
-        dadoswl = fazGet("https://api.henrikdev.xyz/valorant/v3/matches/"
+        dadoswl = fazGetQuery("https://api.henrikdev.xyz/valorant/v3/matches/"
           + regiao +
           "/" +
           nmusuario +
